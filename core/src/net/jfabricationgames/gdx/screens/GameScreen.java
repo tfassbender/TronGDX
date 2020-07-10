@@ -1,4 +1,4 @@
-package net.jfabricationgames.gdx;
+package net.jfabricationgames.gdx.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

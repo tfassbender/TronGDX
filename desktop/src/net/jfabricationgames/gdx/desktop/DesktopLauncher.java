@@ -7,6 +7,10 @@ import net.jfabricationgames.gdx.TronGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new TronGdxGame(), config);
+		config.vSyncEnabled = true; //don't show more frames than the screen refresh rate
+		config.title = "TronGDX";
+		config.width = 800;
+		config.height = 600;
+		new LwjglApplication(TronGdxGame.getInstance(), config);
 	}
 }

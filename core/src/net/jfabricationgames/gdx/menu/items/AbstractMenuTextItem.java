@@ -72,5 +72,4 @@ public abstract class AbstractMenuTextItem {
 	public void setBgColor(Color bgColor) {
 		this.bgColor = bgColor;
 	}
-	
 }

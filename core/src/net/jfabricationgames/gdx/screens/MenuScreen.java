@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import net.jfabricationgames.gdx.TronGdxGame;
 import net.jfabricationgames.gdx.menu.items.MenuButton;
+import net.jfabricationgames.gdx.menu.items.MenuHeadline;
 
 public class MenuScreen extends ScreenAdapter {
 	
@@ -16,14 +17,16 @@ public class MenuScreen extends ScreenAdapter {
 	private ShapeRenderer shapeRenderer;
 	
 	private Vector2 screenSize;
-	
+
+	private MenuHeadline headline;
 	private MenuButton startButton;
 	
 	public MenuScreen() {
 		screenSize = new Vector2(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		batch = new SpriteBatch();
 		shapeRenderer = new ShapeRenderer();
-		
+
+		createHeadline();
 		createButtons();
 	}
 
@@ -31,11 +34,13 @@ public class MenuScreen extends ScreenAdapter {
 	public void render(float delta) {
 		//draw the menu
 		shapeRenderer.begin(ShapeType.Filled);
-		startButton.renderButtonBackground(shapeRenderer);
+		startButton.renderBackground(shapeRenderer);
+		headline.renderBackground(shapeRenderer);
 		shapeRenderer.end();
 		
 		batch.begin();
-		startButton.renderButtonText(batch);
+		startButton.renderText(batch);
+		headline.renderText(batch);
 		batch.end();
 		
 		//handle button clicks
@@ -51,6 +56,13 @@ public class MenuScreen extends ScreenAdapter {
 	public void dispose() {
 		batch.dispose();
 		shapeRenderer.dispose();
+	}
+	
+	private void createHeadline() {
+		final Vector2 headlineSize = new Vector2(400, 100);
+		final Vector2 headlinePosition = new Vector2((screenSize.x - headlineSize.x) / 2, screenSize.y - headlineSize.y - 50);
+		
+		headline = new MenuHeadline(headlinePosition, headlineSize, "TronGDX", 3f);
 	}
 	
 	private void createButtons() {
